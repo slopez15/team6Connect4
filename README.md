@@ -1,2 +1,12 @@
+connect-four
+============
+
+Project for SER215
+
 # team6Connect4
-for SER216 if you end up using this for source control.
+Github repo if you end up using this for source control.
+
+Team,
+You may clone this repo. 
+If you have a jar (beansbinding) in the lib source folder, right click on it>>buildpath>>add buildpath
+
