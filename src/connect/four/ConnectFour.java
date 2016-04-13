@@ -4,6 +4,8 @@ package connect.four;
 import java.io.*;
 import connect.four.player.*;
 import connect.four.board.*;
+import connect.four.gui.GUI;
+import connect.four.gui.MainMenuPanel;
 
 
 public class ConnectFour {
@@ -13,6 +15,8 @@ public class ConnectFour {
      */
 
     public static void main(String[] args) throws IOException {
+    GUI k = new GUI();
+    MainMenuPanel ed = new MainMenuPanel(k);
 	BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 	System.out.print("Player's name: ");
 	ConsolePlayer p1 = new ConsolePlayer(stdin.readLine());
