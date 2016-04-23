@@ -1,0 +1,11 @@
+#Can comment only at the start of .gitignore files
+#ignore netbeans project folder, build type folders, eclipse created file or folders, and any running files.
+/bin/
+.classpath
+.project
+nbproject/private/
+nbproject/build-impl.xml
+nbproject/genfiles.properties
+/build/
+/dist/
+*~
