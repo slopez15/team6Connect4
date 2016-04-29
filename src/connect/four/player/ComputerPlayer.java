@@ -11,8 +11,11 @@ import java.util.Random;
 
 public class ComputerPlayer implements Player {
     int m_depth;
+    Random random;
+    Random randomMaxMove = new Random();
     public ComputerPlayer() {
         m_depth = 6;
+		random = new Random();
     }
     public ComputerPlayer(int depth) {
         m_depth = depth;
@@ -21,14 +24,16 @@ public class ComputerPlayer implements Player {
         return "Computer";
     }
 
-    @Override public void performPlay(ReadWritableBoard board) {
+    @Override 
+    public void performPlay(ReadWritableBoard board) {
         int l = board.getWidth();
-	int m = board.getHeight();
+		int m = board.getHeight();
         if (board.getMoveCount() == 0) {
-            board.play((new Random()).nextInt(l), this);
+    		int randomValue = random.nextInt(l);
+    	    board.play(randomValue, this);
         } else {
             Player opponent = getOpponent(board);
-            int maxMove = (new Random()).nextInt(l);
+    		int maxMove = randomMaxMove.nextInt(l);            
             long maxScore = scoreMove(maxMove, m_depth, board, opponent);
             long[] scores = new long[l];
             for (int i = 0; i != l; ++i) {
