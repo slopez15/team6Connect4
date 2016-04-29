@@ -10,6 +10,7 @@ import connect.four.*;
 import connect.four.board.*;
 import connect.four.player.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -66,6 +67,12 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
         private void initComponents() {
 
                 player1NameBox = new javax.swing.JLabel();
+                player1WinBox = new javax.swing.JLabel();
+                player2WinBox = new javax.swing.JLabel();
+                player1LossBox = new javax.swing.JLabel();
+                player2LossBox = new javax.swing.JLabel();
+                player1TieBox = new javax.swing.JLabel();
+                player2TieBox = new javax.swing.JLabel();
                 currentWins = new javax.swing.JLabel();
                 pNameDisplay = new javax.swing.JLabel();
                 turnDisplay = new javax.swing.JLabel();
@@ -89,15 +96,51 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 });
                 setLayout(null);
 
-                player1NameBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player1NameBox.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 18)); // NOI18N
                 player1NameBox.setForeground(new java.awt.Color(255, 255, 255));
                 player1NameBox.setText("player 1");
                 add(player1NameBox);
                 player1NameBox.setBounds(1070, 40, 210, 40);
 
+                player1WinBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player1WinBox.setForeground(new java.awt.Color(255, 255, 255));
+                player1WinBox.setText("player 1");
+                add(player1WinBox);
+                player1WinBox.setBounds(1070, 65, 210, 40);
+                
+                player1LossBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player1LossBox.setForeground(new java.awt.Color(255, 255, 255));
+                player1LossBox.setText("player 1");
+                add(player1LossBox);
+                player1LossBox.setBounds(1070, 90, 210, 40);
+                
+                player1TieBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player1TieBox.setForeground(new java.awt.Color(255, 255, 255));
+                player1TieBox.setText("player 1");
+                add(player1TieBox);
+                player1TieBox.setBounds(1070, 115, 210, 40);
+                
+                player2WinBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player2WinBox.setForeground(new java.awt.Color(255, 255, 255));
+                player2WinBox.setText("player 2");
+                add(player2WinBox);
+                player2WinBox.setBounds(1070, 185, 210, 40);
+                
+                player2LossBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player2LossBox.setForeground(new java.awt.Color(255, 255, 255));
+                player2LossBox.setText("player 2");
+                add(player2LossBox);
+                player2LossBox.setBounds(1070, 210, 210, 40);
+                
+                player2TieBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player2TieBox.setForeground(new java.awt.Color(255, 255, 255));
+                player2TieBox.setText("player 2");
+                add(player2TieBox);
+                player2TieBox.setBounds(1070, 235, 210, 40);
+                
                 currentWins.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
                 currentWins.setForeground(new java.awt.Color(255, 255, 255));
-                currentWins.setText("CURRENT WINS");
+                currentWins.setText("Player Scores");
                 add(currentWins);
                 currentWins.setBounds(1070, 0, 200, 40);
 
@@ -105,13 +148,13 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 pNameDisplay.setForeground(new java.awt.Color(255, 255, 255));
                 pNameDisplay.setText("jLabel2");
                 add(pNameDisplay);
-                pNameDisplay.setBounds(1070, 210, 200, 40);
+                pNameDisplay.setBounds(1070, 310, 200, 40);
 
                 turnDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
                 turnDisplay.setForeground(new java.awt.Color(255, 255, 255));
                 turnDisplay.setText("jLabel2");
                 add(turnDisplay);
-                turnDisplay.setBounds(1070, 150, 200, 40);
+                turnDisplay.setBounds(1070, 350, 200, 40);
 
                 col1.setBackground(new java.awt.Color(102, 102, 102));
                 col1.setOpaque(false);
@@ -247,11 +290,11 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 topGlass.add(col7);
                 col7.setBounds(770, 0, 300, 740);
 
-                player2NameBox.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                player2NameBox.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 18)); // NOI18N
                 player2NameBox.setForeground(new java.awt.Color(255, 255, 255));
                 player2NameBox.setText("player 1");
                 topGlass.add(player2NameBox);
-                player2NameBox.setBounds(1070, 90, 210, 40);
+                player2NameBox.setBounds(1070, 160, 210, 40);
 
                 add(topGlass);
                 topGlass.setBounds(0, 0, 1280, 800);
@@ -557,14 +600,18 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 
 				//Turn goes up, unless there is a tie
 				if(turnNum == 42){
-					for (GUIPiece piece : pieces) {
-						piece.setIcon(null);
-						topGlass.remove(piece);
-					}
-					gui.setWinner("It's a tie!");
+					gui.setTieOrLoss1(gui.getTie1()+1,gui.getLoss1());
+					gui.setTieOrLoss2(gui.getTie2()+1,gui.getLoss2());
 					board.clear();
-					initNewGame();
-					gui.addGameOver();
+					for (GUIPiece piece : pieces) {
+								if(piece != null){
+									piece.setIcon(null);
+									topGlass.remove(piece);
+								}
+							}
+							initNewGame();
+							gui.addTieScreen();
+							justWon = true;
 				}
 				else{
 					pieces[turnNum] = new GUIPiece(turnNum%2);
@@ -621,8 +668,16 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 		pNameDisplay.setText(game.getCurrentPlayer().getName() + "'s turn.");
 		turnDisplay.setForeground(Color.white);
 		turnDisplay.setText("Round number " +(turnNum/2+1));
-		player1NameBox.setText(players[0].getName() + ":    " + gui.getScore1());
-		player2NameBox.setText(players[1].getName() + ":    " + gui.getScore2());
+		
+		player1NameBox.setText(players[0].getName());
+		player1WinBox.setText("Wins: "+ gui.getScore1());
+		player1LossBox.setText("Losses: "+gui.getLoss1());
+		player1TieBox.setText("Ties: "+gui.getTie1());
+		
+		player2NameBox.setText(players[1].getName());
+		player2WinBox.setText("Wins: "+ gui.getScore2());
+		player2LossBox.setText("Losses: "+gui.getLoss2());
+		player2TieBox.setText("Ties: "+gui.getTie2());
 		setVisible(true);
 	}
 	
@@ -636,9 +691,11 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 		if(turnNum < 41){
 			if(game.getCurrentPlayer() == players[0]){
 				gui.setScore1(gui.getScore1()+1);
+				gui.setTieOrLoss2(gui.getTie2(),gui.getLoss2()+1);
 			}
 			else if(game.getCurrentPlayer() == players[1]){
 				gui.setScore2(gui.getScore2()+1);
+				gui.setTieOrLoss1(gui.getTie1(),gui.getLoss1()+1);
 			}
 			gui.setWinner(game.getCurrentPlayer().getName());
 			
@@ -694,6 +751,12 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
         private javax.swing.JLabel pNameDisplay;
         private javax.swing.JLabel player1NameBox;
         private javax.swing.JLabel player2NameBox;
+        private javax.swing.JLabel player1LossBox;
+        private javax.swing.JLabel player2LossBox;
+        private javax.swing.JLabel player1TieBox;
+        private javax.swing.JLabel player2TieBox;
+        private javax.swing.JLabel player1WinBox;
+        private javax.swing.JLabel player2WinBox;
         private javax.swing.JPanel topGlass;
         private javax.swing.JLabel turnDisplay;
         // End of variables declaration//GEN-END:variables

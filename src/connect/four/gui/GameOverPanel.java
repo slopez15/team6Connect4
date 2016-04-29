@@ -2,6 +2,14 @@
 
 package connect.four.gui;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class GameOverPanel extends javax.swing.JPanel {
 
@@ -17,12 +25,11 @@ public class GameOverPanel extends javax.swing.JPanel {
 	}
 	
 	
-
-	
+    
 	@SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
-
+			
                 winnerDisplay = new javax.swing.JLabel();
                 winner = new javax.swing.JLabel();
                 labelGameOVer = new javax.swing.JLabel();
@@ -59,6 +66,7 @@ public class GameOverPanel extends javax.swing.JPanel {
                         }
                 });
 
+                
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
                 layout.setHorizontalGroup(

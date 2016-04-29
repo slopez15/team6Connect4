@@ -19,12 +19,16 @@ public class GUI extends javax.swing.JFrame {
 	String p1Name;
 	String p2Name;
 	String winner;
-	int score1, score2;
+	int score1, score2, Tie1, Tie2, Loss1, Loss2;
 	
 	public GUI() {
 		initComponents();
 		score1 = 0;
 		score2 = 0;
+		Tie1=0;
+		Tie2=0;
+		Loss1=0;
+		Loss2=0;
 		//gamePanel = new GamePanel(this);
 		mainMenu = new MainMenuPanel(this);
 		add(mainMenu);
@@ -125,7 +129,12 @@ public class GUI extends javax.swing.JFrame {
 	void addMainMenu(){
 		score1 = 0;
 		score2 = 0;
+		Tie1 = 0;
+		Tie2 = 0;
+		Loss1 = 0;
+		Loss2 = 0;
 		mainMenu = new MainMenuPanel(this);
+		System.out.println(mainMenu.getClass().getName());
 		add(mainMenu);
 	}
 	
@@ -133,6 +142,15 @@ public class GUI extends javax.swing.JFrame {
 		remove(gamePanel);
 		System.out.println("New Game Over Panel added");
 		gameOverPanel = new GameOverPanel(this, winner);
+		add(gameOverPanel);
+		updateDisplay();
+		
+	}
+	
+	void addTieScreen(){
+		remove(gamePanel);
+		System.out.println("New Game Over Panel added");
+		gameOverPanel = new GameOverPanel(this, "Its a tie no winner");
 		add(gameOverPanel);
 		updateDisplay();
 	}
@@ -149,6 +167,22 @@ public class GUI extends javax.swing.JFrame {
 		return score2;
 	}
 	
+	int getTie1(){
+		return Tie1;
+	}
+	
+	int getTie2(){
+		return Tie2;
+	}
+	
+	int getLoss1(){
+		return Loss1;
+	}
+	
+	int getLoss2(){
+		return Loss2;
+	}
+	
 	void setScore1(int newScore){
 		score1 = newScore;
 	}
@@ -157,6 +191,15 @@ public class GUI extends javax.swing.JFrame {
 		score2 = newScore;
 	}
 	
+	void setTieOrLoss1(int tie, int loss){
+		Tie1 = tie;
+		Loss1 = loss;
+	}
+	
+	void setTieOrLoss2(int tie, int loss){
+		Tie2 = tie;
+		Loss2 = loss;
+	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         // End of variables declaration//GEN-END:variables

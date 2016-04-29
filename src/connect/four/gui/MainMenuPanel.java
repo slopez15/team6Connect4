@@ -6,6 +6,17 @@
 
 package connect.four.gui;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import connect.four.Game;
 
 
@@ -16,6 +27,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
 	private boolean isEnabled;
 	
 	public MainMenuPanel(GUI gui) {
+		ImagePanel panel = new ImagePanel(new ImageIcon("/Images/board.png").getImage());
+		add(panel);
 		initComponents();
 		setSize(1280,800);
 		this.gui = gui;
@@ -32,7 +45,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 	@SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
-
+				
                 title = new javax.swing.JLabel();
                 tfplayer1 = new javax.swing.JTextField();
                 tfplayer2 = new javax.swing.JTextField();
@@ -41,8 +54,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 butPlay = new javax.swing.JButton();
                 jtComputerToggle = new javax.swing.JToggleButton();
 
-                setBackground(new java.awt.Color(0, 0, 0));
-
+                
+                
                 title.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
                 title.setForeground(new java.awt.Color(255, 255, 255));
                 title.setText("Connect Four");
@@ -162,11 +175,13 @@ public class MainMenuPanel extends javax.swing.JPanel {
 			tfplayer2.setEditable(true);
 			isEnabled = false;
 		}
-		
 	
 		
         }//GEN-LAST:event_jtComputerToggleActionPerformed
 
+        
+       
+        
 	public boolean getIsEnabled(){
 		return isEnabled;
 	}
