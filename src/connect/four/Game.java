@@ -1,6 +1,5 @@
-
 package connect.four;
-
+?
 import connect.four.player.Player;
 import connect.four.board.ReadableBoard;
 import connect.four.board.ReadWritableBoard;
@@ -8,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-
+?
+?
 public class Game implements ScoreChart {
     Player[] m_players;
     int[] m_scores;
@@ -99,18 +98,16 @@ public class Game implements ScoreChart {
     public Player getCurrentPlayer(){
             return m_players[m_currentPlayer];
     }
-
+?
     public int getInRow() {
 	return m_inRow;
     }
-
+?
     public ReadableBoard getBoard() {
 	return m_board;
     }
-
-    public static Player detectWinner(ReadableBoard board, int inRow) {
-        int l = board.getWidth();
-        int m = board.getHeight();
+?
+    public static Player detectWinnerAlgor1(int l, int m, ReadableBoard board, int inRow){
         for (int i = 0; i != l; ++i) {
             Player possible = null;
             int found = 0;
@@ -126,6 +123,9 @@ public class Game implements ScoreChart {
                 }
             }
         }
+		return null;
+    }
+    public static Player detectWinnerAlgor2(int l, int m, ReadableBoard board, int inRow){
         for (int i = 0; i != m; ++i) {
             Player possible = null;
             int found = 0;
@@ -141,25 +141,31 @@ public class Game implements ScoreChart {
                 }
             }
         }
-	for (int i = -l; i != l; ++i) {
+		return null;	
+    }
+    public static Player detectWinnerAlgor3(int l, int m, ReadableBoard board, int inRow){
+    	for (int i = -l; i != l; ++i) {
             Player possible = null;
             int found = 0;
-	    for (int j = 0; j != m; ++j) {
-		int k = j+i;
-		if (k >= 0 && k < l) {
-                    if (board.whoPlayed(k, j) == possible && possible != null) {
-                        found += 1;
-                    } else {
-                        found = 1;
-                        possible = board.whoPlayed(k, j);
-                    }
-                    if (found == inRow) {
-                        return possible;
-                    }
-		}
-	    }
-	}
-	for (int i = -l; i != l; ++i) {
+		    for (int j = 0; j != m; ++j) {
+				int k = j+i;
+				if (k >= 0 && k < l) {
+	                if (board.whoPlayed(k, j) == possible && possible != null) {
+	                    found += 1;
+	                } else {
+	                    found = 1;
+	                    possible = board.whoPlayed(k, j);
+	                }
+	                if (found == inRow) {
+	                    return possible;
+	                }
+				}
+		    }
+    	}
+		return null;
+    }
+    public static Player detectWinnerAlgor4(int l, int m, ReadableBoard board, int inRow){
+    	for (int i = -l; i != l; ++i) {
             Player possible = null;
             int found = 0;
 	    for (int j = 0; j != m; ++j) {
@@ -177,6 +183,28 @@ public class Game implements ScoreChart {
 		}
 	    }
 	}
+		return null;
+    }
+    
+    public static Player detectWinner(ReadableBoard board, int inRow) {
+        int l = board.getWidth();
+        int m = board.getHeight();
+        Player part1 = detectWinnerAlgor1(l, m, board, inRow);
+        Player part2 = detectWinnerAlgor2(l, m, board, inRow);
+        Player part3 = detectWinnerAlgor3(l, m, board, inRow);
+        Player part4 = detectWinnerAlgor4(l, m, board, inRow);
+        if (part1 != null){
+        	return part1;
+        }
+        if (part2 != null){
+        	return part2;
+        }
+        if (part3 != null){
+        	return part3;
+        }
+        if (part4 != null){
+        	return part4;
+        }
         return null;
     }
 }
