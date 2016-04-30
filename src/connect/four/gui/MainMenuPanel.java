@@ -27,8 +27,6 @@ public class MainMenuPanel extends javax.swing.JPanel {
 	private boolean isEnabled;
 	
 	public MainMenuPanel(GUI gui) {
-		ImagePanel panel = new ImagePanel(new ImageIcon("/Images/board.png").getImage());
-		add(panel);
 		initComponents();
 		setSize(1280,800);
 		this.gui = gui;
