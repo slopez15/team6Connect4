@@ -55,7 +55,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 
                 
                 title.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
-                title.setForeground(new java.awt.Color(255, 255, 255));
+//                title.setForeground(new java.awt.Color(255, 255, 255));
                 title.setText("Connect Four");
 
                 tfplayer1.setText("Player 1");
@@ -73,11 +73,11 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 });
 
                 jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-                jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+//                jLabel1.setForeground(new java.awt.Color(255, 255, 255));
                 jLabel1.setText("Player 1:");
 
                 jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-                jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+//                jLabel2.setForeground(new java.awt.Color(255, 255, 255));
                 jLabel2.setText("Player 2:");
 
                 butPlay.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N

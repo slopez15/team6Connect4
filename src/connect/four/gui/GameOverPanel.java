@@ -36,18 +36,18 @@ public class GameOverPanel extends javax.swing.JPanel {
                 butPlayAgain = new javax.swing.JButton();
                 butMainMenu = new javax.swing.JButton();
 
-                setBackground(new java.awt.Color(0, 0, 0));
+                //setBackground(new java.awt.Color(0, 0, 0));
 
                 winnerDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-                winnerDisplay.setForeground(new java.awt.Color(255, 255, 255));
+//                winnerDisplay.setForeground(new java.awt.Color(255, 255, 255));
                 winnerDisplay.setText("Winner");
 
                 winner.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-                winner.setForeground(new java.awt.Color(255, 255, 255));
+//                winner.setForeground(new java.awt.Color(255, 255, 255));
                 winner.setText("Winner:");
 
                 labelGameOVer.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
-                labelGameOVer.setForeground(new java.awt.Color(255, 255, 255));
+//                labelGameOVer.setForeground(new java.awt.Color(255, 255, 255));
                 labelGameOVer.setText("GAME OVER");
 
                 butPlayAgain.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
