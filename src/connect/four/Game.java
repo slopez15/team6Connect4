@@ -1,5 +1,5 @@
 package connect.four;
-?
+
 import connect.four.player.Player;
 import connect.four.board.ReadableBoard;
 import connect.four.board.ReadWritableBoard;
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-?
-?
+
+
 public class Game implements ScoreChart {
     Player[] m_players;
     int[] m_scores;
@@ -98,15 +98,15 @@ public class Game implements ScoreChart {
     public Player getCurrentPlayer(){
             return m_players[m_currentPlayer];
     }
-?
+
     public int getInRow() {
 	return m_inRow;
     }
-?
+
     public ReadableBoard getBoard() {
 	return m_board;
     }
-?
+
     public static Player detectWinnerAlgor1(int l, int m, ReadableBoard board, int inRow){
         for (int i = 0; i != l; ++i) {
             Player possible = null;
