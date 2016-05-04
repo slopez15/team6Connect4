@@ -150,7 +150,7 @@ public class GUI extends javax.swing.JFrame {
 	void addTieScreen(){
 		remove(gamePanel);
 		System.out.println("New Game Over Panel added");
-		gameOverPanel = new GameOverPanel(this, "Its a tie no winner");
+		gameOverPanel = new GameOverPanel(this, "Tie Game. No Winner");
 		add(gameOverPanel);
 		updateDisplay();
 	}
